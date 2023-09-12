@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: bot-variables
+data:
+  #env variables for the bot
+  PORTAL_HOST: "localhost:8800"
+  ES_HOST: "localhost:9200"

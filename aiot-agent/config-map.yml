@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: agent-variables
+data:
+  #env variables for the agent
+  PORTAL_HOST: "localhost:8800"
+  KAFKA_HOST: "localhost:9092"
+  DEVICE_HOST: "localhost:3000"
+  AGENT_ACTION: "consume"
+  AGENT_TYPE: "data_logger"

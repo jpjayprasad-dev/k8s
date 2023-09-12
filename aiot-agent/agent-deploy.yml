@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aiot-agent
+spec:
+  selector:
+    matchLabels:
+      app: aiot-agent
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: aiot-agent
+    spec:
+      containers:
+      - name: aiot-agent
+        image: aiotagent:latest
+        imagePullPolicy: Never
+        env:
+        - name: PORTAL_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: agent-variables
+              key: PORTAL_HOST
+        - name: KAFKA_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: agent-variables
+              key: KAFKA_HOST
+        - name: DEVICE_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: agent-variables
+              key: DEVICE_HOST
+        - name: AGENT_ACTION
+          valueFrom:
+            configMapKeyRef:
+              name: agent-variables
+              key: AGENT_ACTION
+        - name: AGENT_TYPE
+          valueFrom:
+            configMapKeyRef:
+              name: agent-variables
+              key: AGENT_TYPE
